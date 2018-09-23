@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
     //get directory
     cout<<"Getting Directory..."<<endl;
     string SRC(argv[1]);
-    string DIST="dist/"+SRC.substr(SRC.find_last_of("/\\") + 1);
+    string DIST=SRC.substr(SRC.find_last_of("/\\") + 1);
     string::size_type const p(DIST.find_last_of('.'));
     DIST=DIST.substr(0, p)+".csv";
     cout<<"src: "<<SRC<<endl;
@@ -74,7 +74,7 @@ int main(int argc, char *argv[]){
     //Opening file
     cout<<"opening result"<<endl;
     string cmd= "gedit "+DIST;
-    system("gedit dist/test.csv");
+    system(cmd.c_str());
 
     return 0;
 }
