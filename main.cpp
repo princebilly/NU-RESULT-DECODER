@@ -29,6 +29,7 @@ int main(int argc, char *argv[]){
     //attempting
     for(int count=1;choice;count++){
         cout<<"Attempt "<<count<<":"<<endl;
+        cout<<"Please check your file before starting my job..."<<endl;
         system(cmdin.c_str());
 
 
