@@ -1,20 +1,36 @@
-#define SRC "src/test.txt"
-#define DISTCSV "dist/test.csv"
-#define DISTSSQL "dist/resultsql.sql"
-
 #include<iostream>
 #include<fstream>
 #include<cctype>
+#include<string>
 using namespace std;
 
+int main(int argc, char *argv[]){
+    //Introduction
+    cout<<"Created by Prince Billy Graham Karmoker"<<endl;
 
-int main(){
+    //get directory
+    cout<<"Getting Directory..."<<endl;
+    string SRC(argv[1]);
+    string DIST="dist/"+SRC.substr(SRC.find_last_of("/\\") + 1);
+    string::size_type const p(DIST.find_last_of('.'));
+    DIST=DIST.substr(0, p)+".csv";
+    cout<<"src: "<<SRC<<endl;
+    cout<<"destination: "<<DIST<<endl;
+
+    //opening file
+    cout<<"Opening file..."<<endl;
     ifstream src(SRC);
-    ofstream dist(DISTCSV);
+    //creating file
+    cout<<"Creating csv file..."<<endl;
+    ofstream dist(DIST);
+
     char r;
     int numberOfSubject;
     cout<<"Enter number of subject: ";
     cin>>numberOfSubject;
+
+    //Generating result
+    cout<<"Generating file..."<<endl;
     //*
     while(!src.eof()){
         if(src.get()=='|'){
@@ -54,6 +70,10 @@ int main(){
     //*/
     dist.close();
     src.close();
+
+    //Opening file
+    cout<<"opening result"<<endl;
+    string cmd= "gedit "+DIST;
     system("gedit dist/test.csv");
 
     return 0;
